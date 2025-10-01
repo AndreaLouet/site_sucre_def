@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glitch Effect</title>
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+  <header>
+    <img id="logo" src="img/LOGO_blanc2.png" alt="Logo">
+
+    <nav class="main-nav">
+      <ul>
+        <li class="dropdown">
+          <a href="#">WORK</a>
+          <ul class="dropdown-menu">
+            <li><a href="commercials.html">COMMERCIALS</a></li>
+            <li><a href="music-video.html">MUSIC VIDEO</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact" class="scroll-contact">CONTACT</a></li>
+        <li><a href="https://labjbquarfx.typeform.com/to/J8EF5DkW" target="_blank">BRIEFEZ-NOUS</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Dots -->
+  <div class="slide-indicator">
+    <div class="dot" data-index="0"></div>
+    <div class="dot" data-index="1"></div>
+    <div class="dot" data-index="2"></div>
+    <div class="dot" data-index="3"></div>
+    <div class="dot" data-index="4"></div>
+  </div>
+
+  <!-- Slides -->
+  <div class="slides-wrapper">
+
+
+    <!-- Slide 6 / Contact -->
+    <section class="slide slide6">
+      <div class="content2 content-left">
+        <img src="img/LOGO_noir2.png" alt="Logo Sucre Production" class="slide-logo">
+        <h3 class="slide-title">Studio de production indépendant</h3>
+        <p class="slide-mail">sucre.contact@gmail.com</p>
+        <nav class="slide-links">
+          <a href="https://www.linkedin.com/company/sucre-production" class="slide-link"><span>LinkedIn</span></a>
+          <a href="https://www.instagram.com/sucre_production/?hl=fr" class="slide-link"><span>Instagram</span></a>
+        </nav>
+      </div>
+      <div class="slide-label">CONTACT</div>
+    </section>
+
+    <!-- Footer glitch -->
+    <footer class="slide footer-glitch">
+      <div id="glitch-footer"></div>
+      <div class="footer-content">
+        <img src="img/LOGO_blanc.png" alt="Logo" class="footer-logo">
+        <p class="mentions">mentions légales</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <div id="glitch"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>

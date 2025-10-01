@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  font-family: "Spline Sans", sans-serif;
+  background-color: black;
+  color: white;
+  margin: 0;
+}
+
+header {
+  position: fixed;
+  /* reste toujours au-dessus */
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* occupe toute la largeur */
+  height: 60px;
+  /* hauteur fixe */
+  z-index: 1000;
+}
+
+
+/* MENU */
+/* --- NAVIGATION --- */
+.main-nav {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+}
+
+/* Reset listes */
+.main-nav ul,
+.main-nav li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Menu principal */
+.main-nav>ul {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav>ul>li {
+  margin-left: 2em;
+  /* espace horizontal entre CONTACT et BRIEFEZ-NOUS */
+}
+
+.main-nav>ul>li:first-child {
+  margin-left: 0;
+  /* pas de marge avant WORK */
+}
+
+/* --- NAV LINKS --- */
+.main-nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 0 0.4em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Hover global = baisse d’opacité */
+.main-nav:hover a {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Hover individuel = texte blanc + glow comme les dots */
+.main-nav a:hover {
+  color: white;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+
+/* --- DROPDOWN --- */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+
+  opacity: 0;
+  transform: translateY(8px);
+  /* petit décalage smooth */
+  pointer-events: none;
+
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.dropdown-menu::before {
+  content: "";
+  display: block;
+  height: 0.3em;
+  /* espace entre WORK et COMMERCIALS */
+}
+
+.dropdown-menu li {
+  padding: 0.2em 0;
+  /* pas de fond, juste du spacing vertical */
+}
+
+.dropdown-menu a {
+  color: white;
+  /* identique aux liens du menu principal */
+}
+
+/* Apparition smooth */
+.dropdown:hover .dropdown-menu,
+.dropdown.open .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+
+/* Logo centré */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.pages-logo {
+  width: 5vw;
+  max-width: 80px;
+}
+
+/* Titre avec ligne */
+.pages-title {
+  font-family: "Taviraj", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+  text-align: left;
+  margin: 100px 50px 0 50px;
+  position: relative;
+}
+
+.pages-title::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: white;
+  margin-top: 10px;
+}
+
+/* Grid responsive */
+.container {
+  display: grid;
+  margin: 50px;
+  gap: 50px;
+}
+
+.card {
+  overflow: hidden;
+}
+
+/* Image + vidéo dans un wrapper */
+.media-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.media-wrapper img,
+.media-wrapper video {
+  width: 100%;
+  display: block;
+  transition: opacity 0.6s ease-in-out, transform 1.5s ease;
+}
+
+.media-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1);
+}
+
+/* Overlay noir par-dessus */
+.media-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  /* transparent de base */
+  transition: background 0.6s ease;
+  pointer-events: none;
+}
+
+/* Hover : fade + zoom + assombrissement */
+.media-wrapper:hover video {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.media-wrapper:hover img {
+  opacity: 0;
+}
+
+.media-wrapper:hover::after {
+  background: rgba(0, 0, 0, 0.25);
+  /* assombrissement doux */
+}
+
+
+.card-content {
+  position: relative;
+  padding-top: 10px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-title .client,
+.overlay-title .client {
+  font-weight: bold;
+  color: #fff;
+}
+
+.card-title .project,
+.overlay-title .project {
+  font-style: italic;
+  color: #ccc;
+}
+
+
+.card-duration {
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 5px;
+}
+
+
+/* Overlay lecteur vidéo */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+/* Header overlay */
+.overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px 50px;
+}
+
+.overlay-header img {
+  width: 50px;
+}
+
+.overlay-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 1px solid white;
+  flex-grow: 1;
+}
+
+.overlay-close {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+
+.overlay-close:hover {
+  transform: scale(1.2);
+}
+
+/* Vidéo principale */
+.overlay-video {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 50px;
+}
+
+.overlay-video video {
+  width: 100%;
+  max-height: 80vh;
+  background: black;
+}
+
+/* Contrôles */
+.overlay-controls {
+  display: flex;
+  align-items: center;
+  padding: 15px 50px;
+  gap: 15px;
+}
+
+.play-btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+.progress-container {
+  flex-grow: 1;
+  height: 6px;
+  background: #333;
+  cursor: pointer;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background: white;
+}
+
+
+
+
+
+
+
+
+
+
+/* Organisation overlay-controls */
+.overlay-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 50px;
+}
+
+/* Ligne du haut = occupe toute la largeur */
+.top-controls {
+  display: flex;
+  justify-content: space-between;
+  /* gauche vs droite */
+  align-items: center;
+  width: 100%;
+}
+
+/* Bloc gauche collé à gauche */
+.left-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-right: auto;
+  /* pousse tout ce qui suit à droite */
+}
+
+/* Bloc droite collé à droite */
+.right-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+  /* pousse tout ce qui précède à gauche */
+}
+
+
+/* Boutons */
+.play-btn,
+.volume-btn,
+.fullscreen-btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.play-btn:hover,
+.volume-btn:hover,
+.fullscreen-btn:hover {
+  transform: scale(1.2);
+}
+
+.time-counter {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Progress bar en bas */
+.progress-container {
+  width: 100%;
+  height: 6px;
+  background: #333;
+  cursor: pointer;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background: white;
+}
+
+/* Volume slider caché de base */
+.volume-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#volumeSlider {
+  width: 100px;
+  display: none;
+  margin-right: 8px;
+}
+
+.volume-container:hover #volumeSlider {
+  display: block;
+}

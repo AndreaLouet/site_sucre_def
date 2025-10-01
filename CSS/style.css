@@ -1,0 +1,621 @@
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300..700&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html,
+body {
+  font-family: "Spline Sans", sans-serif;
+  /* police par défaut */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1000;
+}
+
+#logo {
+  cursor: default;
+  width: 10vw;
+  margin: 10px 20px;
+  transition: opacity 0.6s ease;
+  /* durée plus longue et fluide */
+}
+
+
+
+
+
+
+
+
+/* MENU */
+.main-nav {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+}
+
+.main-nav ul,
+.main-nav li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav>ul {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav>ul>li {
+  margin-left: 2em;
+}
+
+.main-nav>ul>li:first-child {
+  margin-left: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 0 0.4em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.main-nav:hover a {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.main-nav a:hover {
+  color: white;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+
+
+
+
+
+
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.dropdown-menu::before {
+  content: "";
+  display: block;
+  height: 0.3em;
+}
+
+.dropdown-menu li {
+  padding: 0.2em 0;
+}
+
+.dropdown-menu a {
+  color: white;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown.open .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+
+
+
+
+
+
+
+
+/* GLITCH OVERLAY */
+#glitch {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black center/cover no-repeat;
+  z-index: 9999;
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* SLIDES */
+.slides-wrapper {
+  height: 100%;
+  width: 100%;
+  transition: transform 1s ease;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  /* prend tout l'écran */
+  position: relative;
+  /* pour superposer contenu et media */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 0;
+  /* plus de padding = titre collé au top */
+  /*background: black;             /* fallback si image non chargée */
+}
+
+/* Fond image et vidéo */
+.background-image,
+.background-video,
+.card-thumbnail,
+.card-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.card-thumbnail {
+  z-index: 1;
+}
+
+.card-video {
+  opacity: 0;
+  transform: scale(0.95);
+  /* départ réduit pour l’effet zoom-in */
+  transition: opacity 1s ease, transform 1s ease;
+  z-index: 2;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.3;
+  transition: opacity 0.5s ease;
+}
+
+/* Contenu au-dessus */
+/* Contenu général des slides */
+.content {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* en haut */
+  align-items: flex-start;
+  /* à gauche */
+  padding: 20px;
+  /* marge depuis le bord gauche et haut */
+  text-align: left;
+  color: white;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .content {
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+}
+
+/* Titres */
+.content h2 {
+  font-family: "Taviraj", serif;
+  font-size: clamp(30px, 5vw, 60px);
+  font-weight: 400;
+  margin: 0 0 0 20px;
+  line-height: 1.2;
+  white-space: pre-wrap;
+}
+
+/* Groupe Client + Projet */
+.title-row {
+  display: flex;
+  align-items: baseline;
+  /* garde le bas du texte aligné */
+  gap: 15px;
+  margin-left: 20px;
+  white-space: pre-wrap;
+  /* ✅ recrée l’alignement avec le logo */
+}
+
+/* Client */
+.title-row h2 {
+  font-family: "Taviraj", serif;
+  font-size: clamp(30px, 5vw, 60px);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+  /* lueur similaire aux dots */
+}
+
+/* Projet */
+.title-row h3 {
+  font-family: "Taviraj", serif;
+  font-size: clamp(20px, 3.5vw, 40px);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.2;
+  opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* SLIDE 6 / CONTACT (merged: keep your styles + containment fixes) */
+
+.slides-wrapper,
+.slide6,
+.slide6 .content-left {
+  box-sizing: border-box;
+}
+
+.slide6 {
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 30px;
+  padding-top: -20vh;
+  padding-right: 140px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.slide6 .content-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin: 0 20px;
+  font-family: "Taviraj", serif;
+  text-transform: uppercase;
+  font-weight: 500;
+
+  width: 100%;
+  max-width: calc(100% - 160px);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.slide6 .slide-logo {
+  width: 200px;
+  max-width: 40vw;
+}
+
+.slide6 .slide-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+  margin-top: -1.5em;
+  white-space: normal;
+}
+
+.slide6 .slide-mail {
+  font-size: 1.1rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  margin: 0;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.slide6 .slide-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.slide6 .slide-link {
+  font-size: 1.1rem;
+  color: black;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  white-space: normal;
+}
+
+.slide6 .slide-link span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.slide6 .slide-link:hover {
+  opacity: 0.6;
+}
+
+.slide6 .slide-link::after {
+  content: "↗";
+  margin-left: 6px;
+  font-size: 0.9em;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.slide6 .slide-link:hover::after {
+  opacity: 1;
+  transform: translateX(3px) translateY(-2px);
+}
+
+/* Responsive tablette / desktop */
+@media (min-width: 768px) {
+  .slide6 {
+    padding-left: 60px;
+    padding-right: 160px;
+    padding-top: -20vh;
+  }
+
+  .slide6 .slide-logo {
+    width: 260px;
+    max-width: 18vw;
+  }
+
+  .slide6 .slide-title {
+    font-size: 1.6rem;
+  }
+
+  .slide6 .slide-mail,
+  .slide6 .slide-link {
+    font-size: 1.3rem;
+  }
+
+  .slide6 .content-left {
+    max-width: calc(100% - 180px);
+  }
+}
+
+/* Responsive petits écrans */
+@media (max-width: 480px) {
+  .slide6 {
+    padding-left: 20px;
+    padding-right: 60px;
+    padding-top: 10vh;
+  }
+
+  .slide6 .slide-logo {
+    width: 160px;
+    max-width: 36vw;
+  }
+
+  .slide6 .slide-title {
+    font-size: 1.1rem;
+  }
+
+  .slide6 .slide-mail,
+  .slide6 .slide-link {
+    font-size: 1rem;
+  }
+
+  .slide6 .content-left {
+    max-width: calc(100% - 80px);
+  }
+}
+
+/* Label vertical pour Contact */
+.slide6 .slide-label {
+  position: absolute;
+  right: 40px;
+  top: 55%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: right center;
+  letter-spacing: 2px;
+  color: #333;
+  text-transform: uppercase;
+  text-orientation: mixed;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .slide6 .slide-label {
+    right: 30px;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* SCROLL DOTS & TITRES */
+.slide-indicator {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1001;
+  padding: 20px;
+}
+
+.slide-indicator .dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slide-indicator .dot.active {
+  transform: scale(1.4);
+  background-color: white;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+}
+
+.slide-indicator .dot.near-active {
+  transform: scale(1.2);
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+.slide-indicator .dot:hover {
+  transform: scale(1.6);
+  background-color: white;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+}
+
+
+
+/* Titres des slides à côté des dots */
+.slide-titles {
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  opacity: 0;
+  pointer-events: none;
+  text-align: right;
+  transition: opacity 0.3s ease;
+}
+
+.slide-titles span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.slide-indicator:hover .slide-titles {
+  opacity: 1;
+}
+
+.slide-titles span.active {
+  color: white;
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+/* FOOTER GLITCH */
+.footer-glitch {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#glitch-footer {
+  position: absolute;
+  inset: 0;
+  background: black center/cover no-repeat;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+.footer-logo {
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.mentions {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+
+
+
+
+
+/* CARD MEDIA (thumbnail -> vidéo) */
+.card-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+
+/* Menu en version sombre (gris foncé) */
+header.menu-dark .main-nav a {
+  color: #333;
+}
+
+header.menu-dark .main-nav:hover a {
+  color: rgba(51, 51, 51, 0.3);
+}
+
+header.menu-dark .main-nav a:hover {
+  color: #333;
+  text-shadow: 0 0 8px rgba(51, 51, 51, 0.4);
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Video</title>
+  <link rel="stylesheet" href="CSS/work.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <a href="index.html"><img src="img/LOGO_blanc2.png" alt="Logo" class="pages-logo"></a>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li class="dropdown">
+          <a href="#">WORK</a>
+          <ul class="dropdown-menu">
+            <li><a href="commercials.html">COMMERCIALS</a></li>
+            <li><a href="music-video.html">MUSIC VIDEO</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#contact" class="scroll-contact">CONTACT</a></li>
+        <li><a href="https://labjbquarfx.typeform.com/to/J8EF5DkW" target="_blank">BRIEFEZ-NOUS</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h2 class="pages-title">Music Video</h2>
+
+  <div class="container" id="cardContainer"></div>
+
+  <!-- Overlay lecteur vidéo -->
+  <div class="video-overlay" id="videoOverlay">
+    <div class="overlay-header">
+      <img src="img/LOGO_blanc.png" alt="Logo">
+      <span class="overlay-title" id="overlayTitle"></span>
+      <span class="overlay-close" id="overlayClose">&times;</span>
+    </div>
+
+    <div class="overlay-video">
+      <video id="overlayVideo" controlslist="nodownload" preload="metadata"></video>
+    </div>
+
+    <div class="overlay-controls">
+      <div class="top-controls">
+        <div class="left-controls">
+          <span class="play-btn" id="playBtn">▶</span>
+          <span class="time-counter" id="timeCounter">0:00 / 0:00</span>
+        </div>
+
+        <div class="right-controls">
+          <div class="volume-container">
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="1">
+            <span class="volume-btn" id="volumeBtn">🔊</span>
+          </div>
+          <span class="fullscreen-btn" id="fullscreenBtn">⛶</span>
+        </div>
+      </div>
+
+      <div class="progress-container" id="progressContainer">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+
+  </div>
+  <script src="JS/work.js"></script>
+  <script>
+    window.onload = () => {
+      initWorkPage(projects_musicvideo, "MUSIC-VIDEO");
+    };
+  </script>
+
+</body>
+
+</html>
