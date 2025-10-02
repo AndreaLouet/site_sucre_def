@@ -2,8 +2,7 @@
 
 html,
 body {
-  font-family: "Spline Sans", sans-serif;
-  /* police par défaut */
+  font-family: "Spline Sans", sans-serif; /* police par défaut */
   height: 100%;
   margin: 0;
   padding: 0;
@@ -21,8 +20,8 @@ header {
 
 #logo {
   cursor: default;
-  width: 10vw;
-  margin: 10px 20px;
+  width: 8vw;
+  margin: 5px 64px;
   transition: opacity 0.6s ease;
   /* durée plus longue et fluide */
 }
@@ -261,7 +260,7 @@ header {
   align-items: baseline;
   /* garde le bas du texte aligné */
   gap: 15px;
-  margin-left: 20px;
+  margin-left: 64px;
   white-space: pre-wrap;
   /* ✅ recrée l’alignement avec le logo */
 }
@@ -273,7 +272,7 @@ header {
   font-weight: 300;
   margin: 0;
   line-height: 1.2;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
   /* lueur similaire aux dots */
 }
 
@@ -281,10 +280,10 @@ header {
 .title-row h3 {
   font-family: "Taviraj", serif;
   font-size: clamp(20px, 3.5vw, 40px);
-  font-weight: 300;
+  font-weight: 200;
   margin: 0;
   line-height: 1.2;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 
@@ -307,7 +306,9 @@ header {
 }
 
 .slide6 {
-  background-color: white;
+  background-image: url(../img/texture.jpg);
+  background-position: center top;
+  background-size: cover;
   color: black;
   display: flex;
   justify-content: flex-start;

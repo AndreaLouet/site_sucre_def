@@ -1,40 +1,41 @@
 // COMMERCIALS
 const projects_commercials = [
-  { id: "1", client: "The North Face", project: "Duffel Bag", duree: "00:48" }, /*OK*/
-  { id: "2", client: "Vervume", project: "La rencontre", duree: "??" },
-  { id: "3", client: "Nike x FootLocker", project: "Something's cooking", duree: "01:00" }, /*OK*/
-  { id: "4", client: "WTC x Nike", project: "5 TN", duree: "01:02" }, /*OK*/
-  { id: "5", client: "Adidas", project: "Zidane à Impulstar", duree: "00:54" }, /*OK*/
-  { id: "6", client: "Kobi Sports", project: "Raphaël Varane", duree: "00:55" }, /*OK*/
-  { id: "7", client: "NBA School", project: "Light-up your game", duree: "01:12" }, /*OK*/
-  { id: "8", client: "WTC?", project: "Ils ont toujours un coup d'avance", duree: "01:07" }, /*OK*/
-  { id: "9", client: "LA VIE", project: "Pimp My Veggie", duree: "01:43" }, /*OK*/
-  { id: "10", client: "SKWHEEL", project: "Le vrai hors piste", duree: "00:28" }, /*OK*/
-  { id: "11", client: "Vibre", project: "", duree: "00:30" }, /*OK*/
-  { id: "12", client: "Range Rover", project: "Event Influence", duree: "02:35" }, /*OK*/
-  { id: "13", client: "Akammak", project: "Le dépassement", duree: "??" },
-  { id: "14", client: "Asus", project: "Pro Art 16", duree: "00:30" }, /*OK*/
-  { id: "15", client: "WhenToCop?", project: "Timestamp", duree: "00:38" }, /*OK*/
-  { id: "16", client: "Koro", project: "Un break sucré", duree: "00:37" }, /*OK*/
-  { id: "17", client: "La Vie", project: "Cab London", duree: "01:22" } /*OK*/
+  { id: "1", client: "WhenToCop?", project: "Le coup d'avance", duree: "01:07" },
+  { id: "2", client: "Vervume", project: "Off the grid", duree: "00:55" },
+  { id: "3", client: "Nike x FootLocker", project: "Something's cooking", duree: "01:00" },
+  { id: "4", client: "La Vie", project: "Pimp My Veggie", duree: "01:43" },
+  { id: "5", client: "Adidas", project: "Zinedine Zidane x Impulstar", duree: "00:54" },
+  { id: "6", client: "Kobi Sports", project: "Raphaël Varane x Kobi", duree: "00:55" },
+  { id: "7", client: "Nike TN", project: "WhenToCop? x Nike", duree: "01:02" },
+  { id: "8", client: "The North Face", project: "The Duffel journey", duree: "00:48" },
+  { id: "9", client: "NBA School", project: "Light-up your game", duree: "01:12" },
+  { id: "10", client: "Asus", project: "La créativité sans limite", duree: "00:30" },
+  { id: "11", client: "WhenToCop? - Nike x FootLocker", project: "Something's cooking", duree: "02:32" },
+  { id: "12", client: "Akammak", project: "Collection AW 25", duree: "01:03" },
+  { id: "13", client: "Koro", project: "Sugar break", duree: "00:40" },
+  { id: "14", client: "Vibre", project: "Skincare for all", duree: "00:30" },
+  { id: "15", client: "WhenToCop?", project: "Circare", duree: "00:38" },
+  { id: "16", client: "SKWHEEL", project: "Redécouvrir la liberté", duree: "00:28" },
+  { id: "17", client: "La Vie", project: "Cab Takeover", duree: "01:22" },
+  { id: "18", client: "Range Rover", project: "The Range Rover house", duree: "02:35" }
 ];
 
 // MUSIC VIDEO
 const projects_musicvideo = [
-  { id: "1", client: "PLK x FC Clamart", project: "Nouveau Maillot", duree: "00:54" }, /*OK*/
-  { id: "2", client: "Georgio", project: "Son retour sur scène", duree: "01:04" }, /*OK*/
-  { id: "3", client: "Bekar ft. SDM", project: "Finalement", duree: "03:21" }, /*OK*/
-  { id: "4", client: "Bekar", project: "Vont-ils s'entendre ?", duree: "02:48" }, /*OK*/
-  { id: "5", client: "Nayana IZ", project: "", duree: "??" },
-  { id: "6", client: "YOA", project: "La Favorite", duree: "01:17" }, /*OK*/
-  { id: "7", client: "Héléna", project: "Boule au ventre", duree: "01:12" }, /*OK*/
-  { id: "8", client: "Steve", project: "Le bleu du ciel", duree: "03:01" }, /*OK*/
-  { id: "9", client: "Sasha Nice", project: "Tu m'as soigné", duree: "01:48" }, /*OK*/
-  { id: "10", client: "Tsew The Kid", project: "S'en aller", duree: "02:37" }, /*OK*/
-  { id: "11", client: "Yoa", project: "Nulle", duree: "02:33" }, /*OK*/
-  { id: "12", client: "Ratus ft. Spri Noir", project: "", duree: "03:14" }, /*OK*/
-  { id: "13", client: "Sasha Nice", project: "Si je reste", duree: "02:49" }, /*OK*/
-  { id: "14", client: "Tsew The Kid", project: "Laisse faire", duree: "03:01" } /*OK*/
+  { id: "1", client: "PLK x FC Clamart", project: "Nouveau Maillot", duree: "00:54" },
+  { id: "2", client: "Georgio x Adidas Arena", project: "2k25 reveal", duree: "01:04" },
+  { id: "3", client: "Bekar ft. SDM", project: "Finalement", duree: "03:21" },
+  { id: "4", client: "Bekar", project: "Vont-ils s'entendre ?", duree: "02:48" },
+  { id: "5", client: "Nayana IZ", project: "Prana", duree: "??" }, // MANQUE
+  { id: "6", client: "YOA", project: "La Favorite", duree: "01:17" },
+  { id: "7", client: "Héléna", project: "Boule au ventre", duree: "01:12" },
+  { id: "8", client: "Steve", project: "Le bleu du ciel", duree: "03:01" },
+  { id: "9", client: "Sasha Nice", project: "Tu m'as soigné", duree: "01:48" },
+  { id: "10", client: "Tsew The Kid", project: "S'en aller", duree: "02:37" },
+  { id: "11", client: "Yoa", project: "Nulle", duree: "02:33" },
+  { id: "12", client: "Ratus ft. Spri Noir", project: "", duree: "03:14" },
+  { id: "13", client: "Sasha Nice", project: "Si je reste", duree: "02:49" },
+  { id: "14", client: "Tsew The Kid", project: "Laisse faire", duree: "03:01" }
 ];
 
 

@@ -1,7 +1,7 @@
 // --- PROJECTS DATA ---
 const projects = [
-  { id: "1", client: "Georgio", project: "Son retour sur scène"},
-  { id: "2", client: "WhenToCop?", project: "Ils ont toujours un coup d'avance"},
+  { id: "1", client: "WhenToCop?", project: "Ils ont toujours un coup d'avance"},
+  { id: "2", client: "Georgio", project: "Son retour sur scène"},
   { id: "3", client: "Adidas", project: "Zidane à Impulstar"},
   { id: "4", client: "Vibre", project: "WIP"},
   { id: "5", client: "PLK x FC Clamart", project: "Nouveau Maillot"}
