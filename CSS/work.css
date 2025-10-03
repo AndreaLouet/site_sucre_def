@@ -9,14 +9,12 @@ body {
 
 header {
   position: fixed;
-  /* reste toujours au-dessus */
   top: 0;
   left: 0;
   width: 100%;
-  /* occupe toute la largeur */
   height: 60px;
-  /* hauteur fixe */
   z-index: 1000;
+  background-color: black;
 }
 
 
