@@ -299,12 +299,15 @@ header {
 
 /* SLIDE 6 / CONTACT (merged: keep your styles + containment fixes) */
 
+/* SLIDE 6 / CONTACT */
+
 .slides-wrapper,
 .slide6,
 .slide6 .content-left {
   box-sizing: border-box;
 }
 
+/* Structure générale */
 .slide6 {
   background-image: url(../img/texture.jpg);
   background-position: center top;
@@ -312,75 +315,77 @@ header {
   color: black;
   display: flex;
   justify-content: flex-start;
-  padding-left: 30px;
-  padding-top: -20vh;
-  padding-right: 140px;
+  padding: 0 140px 0 30px;
   width: 100%;
   overflow-x: hidden;
 }
 
+/* Contenu à gauche */
 .slide6 .content-left {
   display: flex;
   flex-direction: column;
   gap: 2em;
-  margin: 0 20px;
+  margin: 0 60px;
   font-family: "Taviraj", serif;
   text-transform: uppercase;
-  font-weight: 500;
-
+  font-weight: 600;
   width: 100%;
   max-width: calc(100% - 160px);
+
+  /* Retours à la ligne entre les mots uniquement */
+  white-space: normal;
   overflow-wrap: break-word;
-  word-break: break-word;
-  white-space: normal;
+  word-break: normal;
 }
 
-.slide6 .slide-logo {
-  width: 200px;
-  max-width: 40vw;
-}
-
-.slide6 .slide-title {
-  font-size: 1.3rem;
-  font-weight: 700;
+/* Titre */
+.slide6 h3.slide-title {
+  font-weight: 900;
   margin: 0;
-  margin-top: -1.5em;
-  white-space: normal;
+  font-size: 3rem;
+  line-height: 1.1;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
+/* Mail */
 .slide6 .slide-mail {
-  font-size: 1.1rem;
+  color: black;
+  font-size: 1.4rem;
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
   margin: 0;
+  transition: opacity 0.3s ease;
+
+  /* ✅ empêche la coupure du mail */
   white-space: nowrap;
   overflow-wrap: normal;
   word-break: normal;
 }
 
+.slide6 .slide-mail:hover {
+  opacity: 0.6;
+}
+
+/* Liens */
 .slide6 .slide-links {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 0.6em;
 }
 
 .slide6 .slide-link {
-  font-size: 1.1rem;
+  font-size: 1.4rem; /* 🔹 plus grand sur desktop */
   color: black;
   text-decoration: none;
   transition: opacity 0.3s ease;
-  white-space: normal;
 }
 
 .slide6 .slide-link span {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1.5px;
-}
-
-.slide6 .slide-link:hover {
-  opacity: 0.6;
 }
 
 .slide6 .slide-link::after {
@@ -390,66 +395,56 @@ header {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+.slide6 .slide-link:hover {
+  opacity: 0.6;
+}
+
 .slide6 .slide-link:hover::after {
-  opacity: 1;
   transform: translateX(3px) translateY(-2px);
 }
 
-/* Responsive tablette / desktop */
-@media (min-width: 768px) {
+/* 📱 Responsive tablette */
+@media (max-width: 768px) {
   .slide6 {
-    padding-left: 60px;
-    padding-right: 160px;
-    padding-top: -20vh;
+    padding: 0 10px;
   }
 
-  .slide6 .slide-logo {
-    width: 260px;
-    max-width: 18vw;
-  }
-
-  .slide6 .slide-title {
-    font-size: 1.6rem;
+  .slide6 h3.slide-title {
+    font-size: 2rem;
   }
 
   .slide6 .slide-mail,
   .slide6 .slide-link {
-    font-size: 1.3rem;
+    font-size: 1.2rem; /* 🔹 légèrement réduit pour tablette */
   }
 
   .slide6 .content-left {
-    max-width: calc(100% - 180px);
+    max-width: calc(100% - 120px);
   }
 }
 
-/* Responsive petits écrans */
+/* 📱 Responsive mobile */
 @media (max-width: 480px) {
   .slide6 {
-    padding-left: 20px;
-    padding-right: 60px;
-    padding-top: 10vh;
+    padding: 10vh 20px 0 20px;
   }
 
-  .slide6 .slide-logo {
-    width: 160px;
-    max-width: 36vw;
-  }
-
-  .slide6 .slide-title {
-    font-size: 1.1rem;
+  .slide6 h3.slide-title {
+    font-size: 1.4rem;
   }
 
   .slide6 .slide-mail,
   .slide6 .slide-link {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .slide6 .content-left {
-    max-width: calc(100% - 80px);
+    max-width: 100%;
   }
 }
 
-/* Label vertical pour Contact */
+
+/* Label vertical Contact */
 .slide6 .slide-label {
   position: absolute;
   right: 40px;
