@@ -177,18 +177,23 @@ dots.forEach((dot, i) => {
 });
 
 // --- SPLIT TEXT (h2 + h3) ---
-function splitText(element) {
+function splitTextByWord(element) {
   const text = element.innerText;
   element.innerHTML = "";
-  text.split("").forEach((char, i) => {
+  text.split(" ").forEach((word, i, arr) => {
     const span = document.createElement("span");
-    span.innerText = char;
+    span.innerText = word;
     span.style.display = "inline-block";
     span.style.opacity = "0";
     span.style.transform = "translateY(30px)";
     span.style.transition = "all 0.5s ease";
-    span.style.transitionDelay = `${i * 0.05}s`;
+    span.style.transitionDelay = `${i * 0.10}s`; // un peu plus lent
     element.appendChild(span);
+
+    // remettre l’espace entre les mots sauf après le dernier
+    if (i < arr.length - 1) {
+      element.appendChild(document.createTextNode(" "));
+    }
   });
 }
 
@@ -209,7 +214,7 @@ function resetTitle(el) {
 }
 
 // Split tous les h2 + h3
-document.querySelectorAll(".content h2, .content h3").forEach(el => splitText(el));
+document.querySelectorAll(".content h2, .content h3").forEach(el => splitTextByWord(el));
 
 
 // --- VIDEO SMOOTH FADE-IN ---
