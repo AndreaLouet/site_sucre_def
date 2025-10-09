@@ -113,27 +113,34 @@ function initWorkPage(projects, mediaFolder) {
   updateGrid();
   window.addEventListener("resize", updateGrid);
 
-  // Ouvrir overlay
-  container.addEventListener("click", (e) => {
-    const card = e.target.closest(".card");
-    if (!card) return;
+// Ouvrir overlay
+container.addEventListener("click", (e) => {
+  const card = e.target.closest(".card");
+  if (!card) return;
 
-    const client = card.querySelector(".client").innerText;
-    const project = card.querySelector(".project").innerText;
-    const videoSrc = card.querySelector("video").getAttribute("src");
+  const client = card.querySelector(".client").innerText;
+  const project = card.querySelector(".project").innerText;
+  const videoSrc = card.querySelector("video").getAttribute("src");
 
-    overlayTitle.innerHTML = `
-        <span class="client">${client}</span> - 
-        <span class="project">${project}</span>
-      `;
+  overlayTitle.innerHTML = `
+      <span class="client">${client}</span> - 
+      <span class="project">${project}</span>
+    `;
 
-    overlayVideo.src = videoSrc;
+  overlayVideo.src = videoSrc;
 
-    overlay.style.display = "flex";
-    overlayVideo.currentTime = 0;
-    overlayVideo.play();
-    playBtn.textContent = "⏸";
-  });
+  overlay.style.display = "flex";
+  overlayVideo.currentTime = 0;
+
+  // 🔥 forcer le mute et mettre le bouton en mode "🔇"
+  overlayVideo.muted = true;
+  volumeBtn.textContent = "🔇";
+  volumeSlider.value = 0;
+
+  overlayVideo.play();
+  playBtn.textContent = "⏸";
+});
+
 
   // Fermer overlay
   overlayClose.addEventListener("click", () => {
