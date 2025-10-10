@@ -403,7 +403,53 @@ header {
   cursor: pointer;
   font-size: 1.2rem;
   user-select: none;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
+}
+
+.volume-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  z-index: 10;
+}
+
+.volume-btn {
+  width: 16px;
+  height: 16px;
+  filter: brightness(1);
+}
+
+.volume-slider {
+  width: 100px;
+  cursor: pointer;
+  appearance: none;
+  height: 4px;
+  border-radius: 5px;
+  background: #aaa;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+
+/* ✅ Création de la zone invisible sans rien décaler */
+.volume-container::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  left: -8px;
+  right: -8px;
+  background: transparent;
+  z-index: -1;
+  cursor: pointer;
+
 }
 
 .play-btn:hover,
@@ -414,16 +460,20 @@ header {
 
 .time-counter {
   font-size: 0.9rem;
-  color: #ccc;
+  font-weight: 200;
+  color: white;
+  /*opacity: 0.5;*/
+  font-family: "Taviraj", serif;
+  line-height: 1.2;
 }
 
 /* Progress bar en bas */
 .progress-container {
   width: 100%;
-  height: 6px;
+  height: 2px;
   background: #333;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 0px;
   overflow: hidden;
 }
 
@@ -449,6 +499,17 @@ header {
 .volume-container:hover #volumeSlider {
   display: block;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

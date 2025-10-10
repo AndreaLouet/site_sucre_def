@@ -132,10 +132,10 @@ container.addEventListener("click", (e) => {
   overlay.style.display = "flex";
   overlayVideo.currentTime = 0;
 
-  // 🔥 forcer le mute et mettre le bouton en mode "🔇"
+  // Forcer le mute et mettre le bouton en mode off
   overlayVideo.muted = true;
-  volumeBtn.textContent = "🔇";
-  volumeSlider.value = 0;
+  volumeBtn.src = "img/icones/volume-off.png";
+  volumeSlider.value = 0;  
 
   overlayVideo.play();
   playBtn.textContent = "⏸";
@@ -228,25 +228,35 @@ container.addEventListener("click", (e) => {
 
   volumeSlider.addEventListener("input", () => {
     overlayVideo.volume = volumeSlider.value;
+  
+    // Si le volume est à 0 → on met mute
     if (overlayVideo.volume === 0) {
-      volumeBtn.textContent = "🔇";
+      overlayVideo.muted = true;
+      volumeBtn.src = "img/icones/volume-off.png";
     } else {
-      volumeBtn.textContent = "🔊";
+      overlayVideo.muted = false;
+      volumeBtn.src = "img/icones/volume-on.png";
     }
   });
+  
 
   // Toggle mute au clic sur l’icône
   volumeBtn.addEventListener("click", () => {
     if (overlayVideo.muted) {
       overlayVideo.muted = false;
-      volumeBtn.textContent = "🔊";
-      volumeSlider.value = overlayVideo.volume;
+      volumeBtn.src = "img/icones/volume-on.png";
+  
+      // Si le slider était à 0, on le remet à un volume moyen (optionnel)
+      if (volumeSlider.value == 0) volumeSlider.value = 0.5;
+      overlayVideo.volume = volumeSlider.value;
+  
     } else {
       overlayVideo.muted = true;
-      volumeBtn.textContent = "🔇";
+      volumeBtn.src = "img/icones/volume-off.png";
       volumeSlider.value = 0;
     }
   });
+  
 
 
 
