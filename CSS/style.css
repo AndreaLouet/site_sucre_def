@@ -278,8 +278,8 @@ header {
 
 /* Projet */
 .title-row h3 {
-  font-family: "Taviraj", serif;
   font-size: clamp(20px, 3.5vw, 40px);
+  font-family: "Taviraj", serif;
   font-weight: 200;
   margin: 0;
   line-height: 1.2;

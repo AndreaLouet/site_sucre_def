@@ -15,6 +15,7 @@ header {
   height: 60px;
   z-index: 1000;
   background-color: black;
+  padding: 8px;
 }
 
 
@@ -78,6 +79,7 @@ header {
 }
 
 .dropdown-menu {
+  background-color: black;
   position: absolute;
   top: 100%;
   left: 0;
@@ -116,6 +118,8 @@ header {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  /*background-color: black;
+  padding: 8px 8px 8px 0px;*/
 }
 
 
@@ -124,11 +128,11 @@ header {
 .logo-container {
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  padding: 8px 0;
 }
 
 .pages-logo {
-  width: 5vw;
+  width: 64px;
   max-width: 80px;
 }
 
@@ -229,19 +233,32 @@ header {
 .overlay-title .client {
   font-weight: bold;
   color: #fff;
+  
+  font-family: "Taviraj", serif;
+  font-weight: 300;
+  line-height: 1.2;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
 .card-title .project,
 .overlay-title .project {
+  font-family: "Taviraj", serif;
   font-style: italic;
-  color: #ccc;
+  color: white;
+  font-weight: 200;
+  line-height: 1.2;
+  opacity: 0.5;
 }
-
 
 .card-duration {
   font-size: 0.9rem;
-  color: #999;
+  font-weight: 200;
   margin-top: 5px;
+  color: white;
+  opacity: 0.5;
+
+  font-family: "Taviraj", serif;
+  line-height: 1.2;
 }
 
 
