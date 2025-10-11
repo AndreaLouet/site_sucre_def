@@ -19,7 +19,7 @@ header {
 }
 
 #logo {
-  cursor: default;
+  cursor: pointer;
   width: 8vw;
   margin: 5px 64px;
   transition: opacity 0.6s ease;

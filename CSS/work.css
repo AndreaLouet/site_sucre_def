@@ -170,6 +170,7 @@ header {
 .media-wrapper {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .media-wrapper img,
