@@ -6,12 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Music Video</title>
   <link rel="stylesheet" href="CSS/work.css">
+  <link rel="prefetch" href="index.html">
 </head>
 
 <body>
   <header>
     <div class="logo-container">
-      <a href="index.html"><img src="img/LOGO_blanc.png" alt="Logo" class="pages-logo"></a>
+      <a href="#" id="logo-link">
+        <img src="img/LOGO_blanc.png" alt="Logo" class="pages-logo">
+      </a>
+      <div id="glitch"></div>
     </div>
     <nav class="main-nav">
       <ul>
@@ -67,8 +71,10 @@
 
 
   </div>
+  <div id="glitch"></div>
+  <script src="JS/glitch.js"></script>
   <script src="JS/work.js"></script>
-  <script src="script.js" defer></script>
+  <script src="script.js" defer></script>  
 
   <script>
     window.onload = () => {
