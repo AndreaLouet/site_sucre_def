@@ -548,3 +548,32 @@ header {
   color: white;
   font-weight: 400;
 }
+
+/* === GLITCH FULLSCREEN FIX === */
+#glitch {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black; /* ou une autre couleur de fond opaque */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: none;
+  opacity: 0;
+  z-index: 99999; /* au-dessus de tout */
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+
+/* FOOTER GLITCH (si tu veux un background dans le footer) */
+#glitch-footer {
+  display: block;           /* s'assurer qu'il soit visible dans le footer */
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -46,60 +46,6 @@ const dots = document.querySelectorAll(".slide-indicator .dot");
 let currentSlide = 0;
 let isScrolling = false;
 
-// Liste des images glitch disponibles
-const glitchImages = [
-  "glitch/glitch1.png",
-  "glitch/glitch2.png",
-  "glitch/glitch3.png",
-  "glitch/glitch4.png",
-  "glitch/glitch5.png",
-  "glitch/glitch6.png",
-  "glitch/glitch7.png",
-  "glitch/glitch8.png",
-  "glitch/glitch9.png",
-  "glitch/glitch10.png"
-];
-
-
-// paramètres glitch
-const GLITCH_FRAME_DURATION = 100; // ms par image
-const LOADER_FLASH_DURATION = 120; // ms du "flash" final loader
-const FOOTER_FRAMES_PER_PLAY = 6;  // nb d'images montrées à chaque appel footer
-const FOOTER_PAUSE = 400;          // pause entre deux plays footer (ms)
-
-let glitchFooterIndex = 0;
-
-// LOADER (affiche puis flash)
-function playGlitch() {
-  if (!glitch) return; // sécurité pour pages sans glitch
-  glitch.style.display = "block";
-  glitch.style.opacity = "1";
-  glitch.style.backgroundColor = "";
-
-  glitchImages.forEach((img, idx) => {
-    setTimeout(() => {
-      glitch.style.backgroundImage = `url(${img})`;
-    }, idx * GLITCH_FRAME_DURATION);
-  });
-
-  const totalTime = glitchImages.length * GLITCH_FRAME_DURATION;
-
-  setTimeout(() => {
-    // flash blanc rapide
-    glitch.style.backgroundImage = "none";
-    glitch.style.backgroundColor = "white";
-    glitch.style.opacity = "1";
-
-    setTimeout(() => {
-      // fade out puis hide
-      glitch.style.opacity = "0";
-      setTimeout(() => {
-        glitch.style.display = "none";
-        glitch.style.backgroundColor = "";
-      }, 250);
-    }, LOADER_FLASH_DURATION);
-  }, totalTime);
-}
 
 // FOOTER / BOUCLE GLITCH CONTINUE
 function startFooterGlitch(element) {

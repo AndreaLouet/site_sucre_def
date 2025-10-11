@@ -281,4 +281,17 @@ fullscreenBtn.addEventListener("click", () => {
   }
 });
 
+// dans work.js ou petit inline <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const logoLink = document.querySelector(".logo-container a") || document.getElementById("logo-link");
+  if (logoLink) {
+    logoLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      playGlitch();
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1000);
+    });
+  }
+});
 
