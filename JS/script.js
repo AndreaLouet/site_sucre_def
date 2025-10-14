@@ -366,3 +366,141 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function initVideoOverlay() {
+  const videoOverlay = document.getElementById("videoOverlay");
+  const overlayVideo = document.getElementById("overlayVideo");
+  const overlayTitle = document.getElementById("overlayTitle");
+  const overlayClose = document.getElementById("overlayClose");
+
+  const playBtn = document.getElementById("playBtn");
+  const timeCounter = document.getElementById("timeCounter");
+  const progressContainer = document.getElementById("progressContainer");
+  const progressBar = document.getElementById("progressBar");
+  const volumeBtn = document.getElementById("volumeBtn");
+  const volumeSlider = document.getElementById("volumeSlider");
+  const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+  function togglePlayPause() {
+    if (overlayVideo.paused) {
+      overlayVideo.play().catch(err => console.log("Lecture auto bloquée :", err));
+    } else {
+      overlayVideo.pause();
+    }
+  }
+
+  // --- OUVRIR LE POPUP ---
+  const cards = document.querySelectorAll(".slide.card");
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      const sourceEl = card.querySelector(".card-video source");
+      const videoSrc = sourceEl ? sourceEl.src : (card.querySelector(".card-video video")?.src || "");
+      const client = card.querySelector("h2")?.innerText || "";
+      const project = card.querySelector("h3")?.innerText || "";
+
+      overlayVideo.src = videoSrc;
+      overlayTitle.innerText = `${client} – ${project}`;
+      videoOverlay.style.display = "flex";
+
+      // --- Volume à 0 et mute par défaut ---
+      overlayVideo.volume = 0;
+      overlayVideo.muted = true;
+      volumeSlider.value = 0;
+      volumeBtn.src = "img/icones/volume-off.png";
+
+      overlayVideo.play().catch(err => console.log("Lecture auto bloquée :", err));
+      playBtn.innerText = "⏸";
+    });
+  });
+
+  // --- FERMER LE POPUP ---
+  function closeOverlay() {
+    overlayVideo.pause();
+    overlayVideo.removeAttribute("src");
+    overlayVideo.load();
+    videoOverlay.style.display = "none";
+  }
+
+  overlayClose.addEventListener("click", closeOverlay);
+
+ // ✅ clic sur fond noir : ferme seulement si on clique sur le fond lui-même
+videoOverlay.addEventListener("click", (e) => {
+  // Si la cible directe du clic est le conteneur principal (= fond noir)
+  if (e.target === videoOverlay) {
+    closeOverlay();
+  }
+});
+
+
+  // --- Clic sur la vidéo : play/pause ---
+  overlayVideo.addEventListener("click", (e) => {
+    e.stopPropagation();
+    togglePlayPause();
+  });
+
+  // --- Clavier ---
+  document.addEventListener("keydown", (e) => {
+    if (videoOverlay.style.display === "flex") {
+      if (e.key === "Escape" || e.key === "Esc") closeOverlay();
+      if (e.code === "Space") {
+        e.preventDefault();
+        togglePlayPause();
+      }
+    }
+  });
+
+  // --- Bouton play ---
+  playBtn.addEventListener("click", togglePlayPause);
+  overlayVideo.addEventListener("play", () => playBtn.innerText = "⏸");
+  overlayVideo.addEventListener("pause", () => playBtn.innerText = "▶");
+
+  // --- Temps & barre de progression ---
+  function formatTime(sec) {
+    if (!isFinite(sec)) return "0:00";
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60).toString().padStart(2, "0");
+    return `${m}:${s}`;
+  }
+
+  overlayVideo.addEventListener("timeupdate", () => {
+    const cur = overlayVideo.currentTime;
+    const dur = overlayVideo.duration || 0;
+    timeCounter.innerText = `${formatTime(cur)} / ${formatTime(dur)}`;
+    progressBar.style.width = dur ? `${(cur / dur) * 100}%` : "0";
+  });
+
+  progressContainer.addEventListener("click", e => {
+    const rect = progressContainer.getBoundingClientRect();
+    const percent = (e.clientX - rect.left) / rect.width;
+    if (overlayVideo.duration) overlayVideo.currentTime = percent * overlayVideo.duration;
+  });
+
+  // --- Volume ---
+  volumeBtn.addEventListener("click", () => {
+    overlayVideo.muted = !overlayVideo.muted;
+    volumeBtn.src = overlayVideo.muted ? "img/icones/volume-off.png" : "img/icones/volume-on.png";
+    if (!overlayVideo.muted && overlayVideo.volume === 0) {
+      overlayVideo.volume = 0.5;
+      volumeSlider.value = 0.5;
+    }
+  });
+
+  volumeSlider.addEventListener("input", () => {
+    const v = Number(volumeSlider.value);
+    overlayVideo.volume = v;
+    overlayVideo.muted = v === 0;
+    volumeBtn.src = overlayVideo.muted ? "img/icones/volume-off.png" : "img/icones/volume-on.png";
+  });
+
+  // --- Fullscreen ---
+  fullscreenBtn.addEventListener("click", () => {
+    if (!document.fullscreenElement) {
+      videoOverlay.requestFullscreen().catch(err => console.log(err));
+    } else {
+      document.exitFullscreen();
+    }
+  });
+}
+
+window.addEventListener("load", initVideoOverlay);
+

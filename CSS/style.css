@@ -467,7 +467,7 @@ header.menu-dark .main-nav a:hover {
   display: flex;
   flex-direction: column;
   gap: 22px;
-  z-index: 1001;
+  z-index: 900;
   padding: 20px;
 }
 
