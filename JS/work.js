@@ -295,3 +295,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+
+
+
+// === MENTIONS LÉGALES POPUP ===
+document.addEventListener("DOMContentLoaded", () => {
+  const mentionsBtn = document.querySelector(".mentions");
+  const mentionsPopup = document.getElementById("mentionsPopup");
+  const closeMentions = document.querySelector(".close-mentions");
+
+  if (mentionsBtn && mentionsPopup && closeMentions) {
+    mentionsBtn.style.cursor = "pointer";
+    mentionsBtn.addEventListener("click", () => {
+      mentionsPopup.style.display = "block";
+      document.body.style.overflow = "hidden"; // bloque le scroll
+    });
+
+    closeMentions.addEventListener("click", () => {
+      mentionsPopup.style.display = "none";
+      document.body.style.overflow = "";
+    });
+
+    // Fermeture si clic en dehors du contenu
+    mentionsPopup.addEventListener("click", (e) => {
+      if (e.target === mentionsPopup) {
+        mentionsPopup.style.display = "none";
+        document.body.style.overflow = "";
+      }
+    });
+
+    // Fermeture avec la touche Échap
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        mentionsPopup.style.display = "none";
+        document.body.style.overflow = "";
+      }
+    });
+  }
+});
