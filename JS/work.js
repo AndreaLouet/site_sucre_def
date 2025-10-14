@@ -113,33 +113,33 @@ function initWorkPage(projects, mediaFolder) {
   updateGrid();
   window.addEventListener("resize", updateGrid);
 
-// Ouvrir overlay
-container.addEventListener("click", (e) => {
-  const card = e.target.closest(".card");
-  if (!card) return;
+  // Ouvrir overlay
+  container.addEventListener("click", (e) => {
+    const card = e.target.closest(".card");
+    if (!card) return;
 
-  const client = card.querySelector(".client").innerText;
-  const project = card.querySelector(".project").innerText;
-  const videoSrc = card.querySelector("video").getAttribute("src");
+    const client = card.querySelector(".client").innerText;
+    const project = card.querySelector(".project").innerText;
+    const videoSrc = card.querySelector("video").getAttribute("src");
 
-  overlayTitle.innerHTML = `
+    overlayTitle.innerHTML = `
       <span class="client">${client}</span> - 
       <span class="project">${project}</span>
     `;
 
-  overlayVideo.src = videoSrc;
+    overlayVideo.src = videoSrc;
 
-  overlay.style.display = "flex";
-  overlayVideo.currentTime = 0;
+    overlay.style.display = "flex";
+    overlayVideo.currentTime = 0;
 
-  // Forcer le mute et mettre le bouton en mode off
-  overlayVideo.muted = true;
-  volumeBtn.src = "img/icones/volume-off.png";
-  volumeSlider.value = 0;  
+    // Forcer le mute et mettre le bouton en mode off
+    overlayVideo.muted = true;
+    volumeBtn.src = "img/icones/volume-off.png";
+    volumeSlider.value = 0;
 
-  overlayVideo.play();
-  playBtn.textContent = "⏸";
-});
+    overlayVideo.play();
+    playBtn.textContent = "⏸";
+  });
 
 
   // Fermer overlay
@@ -228,7 +228,7 @@ container.addEventListener("click", (e) => {
 
   volumeSlider.addEventListener("input", () => {
     overlayVideo.volume = volumeSlider.value;
-  
+
     // Si le volume est à 0 → on met mute
     if (overlayVideo.volume === 0) {
       overlayVideo.muted = true;
@@ -238,25 +238,25 @@ container.addEventListener("click", (e) => {
       volumeBtn.src = "img/icones/volume-on.png";
     }
   });
-  
+
 
   // Toggle mute au clic sur l’icône
   volumeBtn.addEventListener("click", () => {
     if (overlayVideo.muted) {
       overlayVideo.muted = false;
       volumeBtn.src = "img/icones/volume-on.png";
-  
+
       // Si le slider était à 0, on le remet à un volume moyen (optionnel)
       if (volumeSlider.value == 0) volumeSlider.value = 0.5;
       overlayVideo.volume = volumeSlider.value;
-  
+
     } else {
       overlayVideo.muted = true;
       volumeBtn.src = "img/icones/volume-off.png";
       volumeSlider.value = 0;
     }
   });
-  
+
 
 
 
