@@ -1,15 +1,15 @@
 // JS/glitch.js
 const glitchImages = [
-    "/glitch/glitch1.png",
-    "/glitch/glitch2.png",
-    "/glitch/glitch3.png",
-    "/glitch/glitch4.png",
-    "/glitch/glitch5.png",
-    "/glitch/glitch6.png",
-    "/glitch/glitch7.png",
-    "/glitch/glitch8.png",
-    "/glitch/glitch9.png",
-    "/glitch/glitch10.png"
+    "/img/glitch/glitch1.png",
+    "/img/glitch/glitch2.png",
+    "/img/glitch/glitch3.png",
+    "/img/glitch/glitch4.png",
+    "/img/glitch/glitch5.png",
+    "/img/glitch/glitch6.png",
+    "/img/glitch/glitch7.png",
+    "/img/glitch/glitch8.png",
+    "/img/glitch/glitch9.png",
+    "/img/glitch/glitch10.png"
   ];
   
   const GLITCH_FRAME_DURATION = 100;
