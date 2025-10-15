@@ -370,7 +370,8 @@ document.addEventListener("DOMContentLoaded", () => {
 function initVideoOverlay() {
   const videoOverlay = document.getElementById("videoOverlay");
   const overlayVideo = document.getElementById("overlayVideo");
-  const overlayTitle = document.getElementById("overlayTitle");
+  const overlayClient = document.getElementById("overlayClient");
+  const overlayProject = document.getElementById("overlayProject");
   const overlayClose = document.getElementById("overlayClose");
 
   const playBtn = document.getElementById("playBtn");
@@ -399,7 +400,8 @@ function initVideoOverlay() {
       const project = card.querySelector("h3")?.innerText || "";
 
       overlayVideo.src = videoSrc;
-      overlayTitle.innerText = `${client} – ${project}`;
+      overlayClient.innerText = client;
+      overlayProject.innerText = project;
       videoOverlay.style.display = "flex";
 
       // --- Volume à 0 et mute par défaut ---
@@ -423,13 +425,13 @@ function initVideoOverlay() {
 
   overlayClose.addEventListener("click", closeOverlay);
 
- // ✅ clic sur fond noir : ferme seulement si on clique sur le fond lui-même
-videoOverlay.addEventListener("click", (e) => {
-  // Si la cible directe du clic est le conteneur principal (= fond noir)
-  if (e.target === videoOverlay) {
-    closeOverlay();
-  }
-});
+  // ✅ clic sur fond noir : ferme seulement si on clique sur le fond lui-même
+  videoOverlay.addEventListener("click", (e) => {
+    // Si la cible directe du clic est le conteneur principal (= fond noir)
+    if (e.target === videoOverlay) {
+      closeOverlay();
+    }
+  });
 
 
   // --- Clic sur la vidéo : play/pause ---

@@ -7,6 +7,25 @@
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
 }*/
 
+.overlay-client {
+  font-weight: bold;
+  color: #fff;
+  font-family: "Taviraj", serif;
+  font-weight: 300;
+  line-height: 1.2;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.overlay-project {
+  font-family: "Taviraj", serif;
+  font-style: italic;
+  color: white;
+  font-weight: 200;
+  line-height: 1.2;
+  opacity: 0.5;
+}
+
+
 .card-title .client,
 .overlay-title .client {
   font-weight: bold;
@@ -17,7 +36,7 @@
   line-height: 1.2;
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
 }
-/*ICI*/
+
 .card-title .project,
 .overlay-title .project {
   font-family: "Taviraj", serif;
