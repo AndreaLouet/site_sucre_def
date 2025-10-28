@@ -424,14 +424,18 @@ function initVideoOverlay() {
   }
 
   overlayClose.addEventListener("click", closeOverlay);
+// === Fermeture quand on clique sur le fond noir (comme dans commercials & music-video) ===
+videoOverlay.addEventListener("click", (e) => {
+  const isInVideo = overlayVideo.contains(e.target);
+  const isInControls = document.querySelector(".overlay-controls")?.contains(e.target);
+  const isInHeader = document.querySelector(".overlay-header")?.contains(e.target);
 
-  // ✅ clic sur fond noir : ferme seulement si on clique sur le fond lui-même
-  videoOverlay.addEventListener("click", (e) => {
-    // Si la cible directe du clic est le conteneur principal (= fond noir)
-    if (e.target === videoOverlay) {
-      closeOverlay();
-    }
-  });
+  if (!isInVideo && !isInControls && !isInHeader) {
+    overlayVideo.pause();
+    videoOverlay.style.display = "none";
+  }
+});
+
 
 
   // --- Clic sur la vidéo : play/pause ---
