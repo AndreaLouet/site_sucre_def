@@ -293,7 +293,6 @@ header.menu-dark .main-nav a:hover {
   box-sizing: border-box;
 }
 
-/* Structure générale */
 .slide6 {
   background-image: url(../img/texture.jpg);
   background-position: center top;
@@ -306,7 +305,6 @@ header.menu-dark .main-nav a:hover {
   overflow-x: hidden;
 }
 
-/* Contenu à gauche */
 .slide6 .content-left {
   display: flex;
   flex-direction: column;
@@ -314,7 +312,7 @@ header.menu-dark .main-nav a:hover {
   margin: 0 60px;
   font-family: "Taviraj", serif;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 300;
   width: 100%;
   max-width: calc(100% - 160px);
 
@@ -326,7 +324,7 @@ header.menu-dark .main-nav a:hover {
 
 /* Titre */
 .slide6 h3.slide-title {
-  font-weight: 900;
+  font-weight: 300;
   margin: 0;
   font-size: 3rem;
   line-height: 1.1;
@@ -363,7 +361,6 @@ header.menu-dark .main-nav a:hover {
 
 .slide6 .slide-link {
   font-size: 1.4rem;
-  /* 🔹 plus grand sur desktop */
   color: black;
   text-decoration: none;
   transition: opacity 0.3s ease;
