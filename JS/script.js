@@ -411,30 +411,38 @@ function initVideoOverlay() {
       const videoSrc = sourceEl ? sourceEl.src : (card.querySelector(".card-video video")?.src || "");
       const client = card.querySelector("h2")?.innerText || "";
       const project = card.querySelector("h3")?.innerText || "";
-
+  
       overlayVideo.src = videoSrc;
       overlayClient.innerText = client;
       overlayProject.innerText = project;
-      videoOverlay.style.display = "flex";
-
-      // --- Volume à 0 et mute par défaut ---
+  
+      videoOverlay.style.display = "flex"; // pour activer la transition
+      requestAnimationFrame(() => {
+        videoOverlay.classList.add("show"); // apparition douce
+      });
+  
+      // Volume par défaut
       overlayVideo.volume = 0;
       overlayVideo.muted = true;
       volumeSlider.value = 0;
       volumeBtn.src = "img/icones/volume-off.png";
-
+  
       overlayVideo.play().catch(err => console.log("Lecture auto bloquée :", err));
       playBtn.innerText = "⏸";
     });
   });
-
-  // --- FERMER LE POPUP ---
+  
   function closeOverlay() {
     overlayVideo.pause();
     overlayVideo.removeAttribute("src");
     overlayVideo.load();
-    videoOverlay.style.display = "none";
+  
+    videoOverlay.classList.remove("show"); // disparition douce
+    setTimeout(() => {
+      videoOverlay.style.display = "none";
+    }, 400); // durée = même que la transition CSS
   }
+  
 
   overlayClose.addEventListener("click", closeOverlay);
 // === Fermeture quand on clique sur le fond noir (comme dans commercials & music-video) ===
@@ -445,7 +453,11 @@ videoOverlay.addEventListener("click", (e) => {
 
   if (!isInVideo && !isInControls && !isInHeader) {
     overlayVideo.pause();
-    videoOverlay.style.display = "none";
+    videoOverlay.classList.remove("show");
+setTimeout(() => {
+  videoOverlay.style.display = "none";
+}, 400); // attendre la fin de la transition
+
   }
 });
 

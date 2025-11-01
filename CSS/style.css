@@ -583,3 +583,17 @@ header.menu-dark .main-nav a:hover {
 }
 
 
+/* --- Overlay vidéo --- */
+#videoOverlay {
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+/* Quand l’overlay est visible */
+#videoOverlay.show {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
