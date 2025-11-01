@@ -366,7 +366,7 @@
 
 .mentions-content h2 {
     font-family: "Taviraj", serif;
-    font-weight: 400;
+    font-weight: 300;
     font-size: clamp(1.5rem, 3vw, 2rem);
     margin-bottom: 1.5rem;
     text-align: left;
@@ -375,15 +375,15 @@
 }
 
 .mentions-content p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    font-weight: 200;
+    color: rgba(255, 255, 255, 0.75);
     margin-bottom: 1rem;
 }
 
 /* Soulignés discrets pour les mots clés */
 .mentions-content strong {
-    font-weight: 600;
+    font-weight: 400;
     color: #fff;
     text-decoration: underline;
     text-underline-offset: 3px;
