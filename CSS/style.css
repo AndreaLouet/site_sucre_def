@@ -294,10 +294,8 @@ header.menu-dark .main-nav a:hover {
 }
 
 .slide6 {
-  background-image: url(../img/texture.jpg);
-  background-position: center top;
-  background-size: cover;
-  color: black;
+  background-color: black;
+  color: white;
   display: flex;
   justify-content: flex-start;
   padding: 0 140px 0 30px;
@@ -334,7 +332,7 @@ header.menu-dark .main-nav a:hover {
 
 /* Mail */
 .slide6 .slide-mail {
-  color: black;
+  color: white;
   font-size: 1.4rem;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -342,7 +340,7 @@ header.menu-dark .main-nav a:hover {
   margin: 0;
   transition: opacity 0.3s ease;
 
-  /* ✅ empêche la coupure du mail */
+  /* empêche la coupure du mail */
   white-space: nowrap;
   overflow-wrap: normal;
   word-break: normal;
@@ -361,7 +359,7 @@ header.menu-dark .main-nav a:hover {
 
 .slide6 .slide-link {
   font-size: 1.4rem;
-  color: black;
+  color: white;
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
@@ -437,7 +435,7 @@ header.menu-dark .main-nav a:hover {
   transform: translateY(-50%) rotate(90deg);
   transform-origin: right center;
   letter-spacing: 2px;
-  color: #333;
+  color: white;
   text-transform: uppercase;
   text-orientation: mixed;
   pointer-events: none;
@@ -466,6 +464,7 @@ header.menu-dark .main-nav a:hover {
   gap: 22px;
   z-index: 900;
   padding: 20px;
+  transition: opacity 0.3s ease;
 }
 
 .slide-indicator .dot {
@@ -544,8 +543,9 @@ header.menu-dark .main-nav a:hover {
   width: 22px;
   height: 22px;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 1;
   transition: opacity 0.3s ease, transform 0.2s ease;
+  position: relative;
 }
 
 .copy-icon:hover {
@@ -556,20 +556,30 @@ header.menu-dark .main-nav a:hover {
 /* Pop-up "Copié" */
 .copied-popup {
   position: absolute;
+  bottom: 140%;
   left: 50%;
-  bottom: 120%;
   transform: translateX(-50%);
-  background: black;
+  background-color: black;
   color: white;
+  border: 0.8px solid white;
   font-size: 0.8rem;
   padding: 4px 8px;
   border-radius: 4px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap;
 }
 
 .copied-popup.show {
   opacity: 1;
   transform: translateX(-50%) translateY(-4px);
 }
+
+.copy-wrapper {
+  height: 22px;
+  position: relative; /* permet à la popup d’être bien centrée sur l’icône */
+  display: inline-block;
+}
+
+

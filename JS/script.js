@@ -220,6 +220,25 @@ if (wrapper && slides.length > 0) {
       original(index);
       updateDots();
 
+// --- Masquer les dots sur la slide contact (slide6) ET sur le footer ---
+const indicator = document.querySelector(".slide-indicator");
+
+if (indicator) {
+  const activeSlide = slides[currentSlide];
+  const isContact = activeSlide && activeSlide.classList.contains("slide6");
+  const isFooter = currentSlide === slides.length - 1;
+
+  if (isContact || isFooter) {
+    indicator.style.opacity = "0";
+    indicator.style.pointerEvents = "none";
+  } else {
+    indicator.style.opacity = "1";
+    indicator.style.pointerEvents = "auto";
+  }
+}
+
+
+
       // reset tous les titres
       document.querySelectorAll(".content h2, .content h3").forEach(el => resetTitle(el));
 
@@ -233,29 +252,6 @@ if (wrapper && slides.length > 0) {
       // lance la vidéo smooth
       playVideoWithThumbnail(activeSlide);
 
-      // MENU & LOGO clair/sombre
-      const header = document.querySelector("header");
-      const logo = document.getElementById("logo");
-      const isDarkSlide =
-        activeSlide.classList.contains("slide6") ||
-        activeSlide.classList.contains("footer-glitch");
-
-      if (isDarkSlide) {
-        header.classList.add("menu-dark");
-      } else {
-        header.classList.remove("menu-dark");
-      }
-
-      const newLogo = isDarkSlide ? "img/LOGO_noir.png" : "img/LOGO_blanc2.png";
-      if (!logo.src.includes(newLogo)) {
-        logo.style.opacity = "0";
-        setTimeout(() => {
-          logo.src = newLogo;
-          logo.style.opacity = "1";
-        }, 600);
-      } else {
-        logo.src = newLogo;
-      }
     };
   })(showSlide);
 
