@@ -330,6 +330,23 @@ if (wrapper && slides.length > 0) {
   updateDots();
 }
 
+const copyBtn = document.getElementById('copyBtn');
+  const emailText = document.getElementById('emailText');
+  const copiedPopup = document.getElementById('copiedPopup');
+
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(emailText.textContent.trim())
+      .then(() => {
+        copiedPopup.classList.add('show');
+        setTimeout(() => {
+          copiedPopup.classList.remove('show');
+        }, 1500);
+      })
+      .catch(err => {
+        console.error('Erreur lors de la copie :', err);
+      });
+  });
+
 
 // === MENTIONS LÉGALES POPUP ===
 document.addEventListener("DOMContentLoaded", () => {

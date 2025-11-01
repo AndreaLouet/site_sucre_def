@@ -528,3 +528,45 @@ header.menu-dark .main-nav a:hover {
   color: white;
   transform: scale(1.1);
 }
+
+/* --- Icône de copie et pop-up --- */
+.mail-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.copy-icon {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.copy-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Pop-up "Copié" */
+.copied-popup {
+  position: absolute;
+  left: 50%;
+  bottom: 120%;
+  transform: translateX(-50%);
+  background: black;
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.copied-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
